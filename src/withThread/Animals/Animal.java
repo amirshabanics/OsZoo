@@ -19,7 +19,6 @@ public class Animal implements Runnable {
         this.m = m;
         isLive = true;
         life = new Thread(this);
-        life.start();
     }
 
     public void kill() {
@@ -47,7 +46,7 @@ public class Animal implements Runnable {
 
     private void move() {
         Zoo.getZoo().getController().getInWorkAnimals().addAndGet(1);
-        if (Math.random() < 0.5) {
+        if (Math.random() < 0.75) {
             int r = (int) (Math.random() * 3) - 1 + n;
             int c = (int) (Math.random() * 3) - 1 + m;
 
@@ -68,9 +67,17 @@ public class Animal implements Runnable {
     private void await() {
         try {
             Zoo.getZoo().getController().getInWaaitAnimals().addAndGet(1);
-            Zoo.getZoo().getNotify().await();
+           synchronized (Zoo.getZoo().getNotify()) {
+               Zoo.getZoo().getNotify().wait();
+           }
         } catch (InterruptedException e) {
             e.printStackTrace();
+        }finally {
+            Zoo.getZoo().getController().getInWaaitAnimals().addAndGet(-1);
         }
+    }
+
+    public void start() {
+        life.start();
     }
 }
