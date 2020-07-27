@@ -1,4 +1,4 @@
-package withThread.Animals;
+package withThread.Animal;
 
 import withThread.World.Zoo;
 

@@ -37,8 +37,7 @@ public class Controller implements Runnable {
     public void start(){
         controle.start();
     }
-    public void waitFor() {
-        boolean b;
+    public void waitFor() { boolean b;
         while (population.get() != inWaaitAnimals.get() || inWorkAnimals.get() > 0) {
 //            System.out.println(population.get() + "   pop");
 //            System.out.println(inWaaitAnimals.get() + "   wait");
@@ -57,15 +56,10 @@ public class Controller implements Runnable {
     @Override
     public void run() {
         while (Zoo.getZoo().isExist()) {
-            System.out.println("b print");
             print();
-            System.out.println("b birth");
             birth();
-            System.out.println("b life");
             life();
-            System.out.println("b death");
             death();
-            System.out.println("--------------------------------");
         }
     }
 

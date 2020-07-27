@@ -1,6 +1,6 @@
 package withThread.Table;
 
-import withThread.Animals.Animal;
+import withThread.Animal.Animal;
 
 import java.util.ArrayList;
 

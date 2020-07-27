@@ -10,8 +10,8 @@ public class Main {
        int s=3;
        int k=20;
        int t=1;
-       boolean r1 = false;
-       boolean r2 = false;
+       boolean r1 = true;
+       boolean r2 = true;
 
         Zoo.createZoo(r , n , m , s , k , t , r1  , r2);
         Zoo.getZoo().start();

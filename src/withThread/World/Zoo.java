@@ -1,17 +1,15 @@
 package withThread.World;
 
-import withThread.Animals.Animal;
+import withThread.Animal.Animal;
 import withThread.Controller.Controller;
 import withThread.Table.Table;
 
 import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.concurrent.Semaphore;
 import java.util.concurrent.atomic.AtomicInteger;
-import java.util.concurrent.locks.Condition;
 
 public class Zoo  {
     private static Zoo world;
