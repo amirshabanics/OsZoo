@@ -78,7 +78,7 @@ public class Cage {
             animal.stopClient();
     }
 
-    public void birth() {
+    public synchronized void birth() {
         AnimalController a ;
         for (AnimalController animal : animals) {
             a = new AnimalController(n, m, type);
@@ -88,14 +88,27 @@ public class Cage {
         numbers *= 2;
     }
 
-    public void balance() {
+    public synchronized  void balance() {
         CopyOnWriteArrayList<AnimalController> balance = new CopyOnWriteArrayList<>();
-        for (int i = 0; i < numbers && (i + 1) * type < limit; i++)
-            balance.add(animals.get(i));
+//        for (int i = 0; i < numbers && (i + 1) * type <= limit; i++)
+//            balance.add(animals.get(i));
+//        numbers = balance.size();
+//        System.out.println("balance: " + numbers + "    all: " + animals.size());
+//        for (int i = numbers; i < animals.size(); i++) {
+//            System.out.println("wana kill number " + (i + 1));
+//            animals.get(i).kill();
+//        }
+        int i = 1;
+        for(AnimalController animal : animals){
+            if(i*type <= limit)
+                balance.add(animal);
+            else
+                animal.kill();
+            i++;
+        }
 
-        numbers = balance.size();
-        for (int i = numbers; i < animals.size(); i++)
-            animals.get(i).kill();
+//        System.out.println("----------------------------");
+        animals.clear();
         animals = balance;
     }
 

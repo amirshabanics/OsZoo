@@ -6,7 +6,6 @@ import withProccessV2.World.Zoo;
 import java.util.ArrayList;
 import java.util.concurrent.atomic.AtomicInteger;
 
-import static withProccess.Controller.Comand.kill;
 
 
 public class ZooController implements Runnable {
@@ -38,14 +37,14 @@ public class ZooController implements Runnable {
         while (Zoo.getZoo().isLive()) {
             System.out.println("wait");
             waitfor();
+            System.out.println("print");
+            print();
             System.out.println("death");
             death();
             System.out.println("birth");
             birth();
             System.out.println("wait again");
             waitfor();
-            System.out.println("print");
-            print();
             System.out.println("life");
             life();
         }
@@ -94,6 +93,7 @@ public class ZooController implements Runnable {
             for (Cage c : cage) {
                 population.addAndGet(-c.getNumbers());
                 inWait.addAndGet(-c.getNumbers());
+                System.out.println("in balance of cages");
                 c.balance();
                 population.addAndGet(+c.getNumbers());
                 inWait.addAndGet(+c.getNumbers());

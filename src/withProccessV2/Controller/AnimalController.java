@@ -44,18 +44,14 @@ public class AnimalController implements Runnable {
 
     private void CreateProccess() {
         try {
-            process = Runtime.getRuntime().exec("java C:\\Users\\npc\\IdeaProjects\\OsZoo\\src\\withProccessV2\\Animal\\Animal.java");
+//            process = Runtime.getRuntime().exec("java C:\\Users\\npc\\IdeaProjects\\OsZoo\\src\\withProccessV2\\Animal\\Animal.java");
+            process = Runtime.getRuntime().exec("java /home/morta/IdeaProjects/OsZoo/src/withProccessV2/Animal/Animal.java");
         } catch (IOException e) {
             e.printStackTrace();
         }
         printer = new PrintWriter(process.getOutputStream());
         reader = new Scanner(process.getInputStream());
         error = new Scanner(process.getErrorStream());
-        new Thread(() -> {
-            while (isLive) {
-                System.out.println(error.nextLine());
-            }
-        }).start();
 
     }
 
@@ -80,12 +76,22 @@ public class AnimalController implements Runnable {
 //                    System.out.println("------------------------------");
                     break;
                 case "move":
-                    if (Zoo.getZoo().getController().getState().get() == 1 && move(Integer.parseInt(s[1]) + n, Integer.parseInt(s[2]) + m, n, m)) {
+                    if (isLive && Zoo.getZoo().getController().getState().get() == 1 && move(Integer.parseInt(s[1]) + n, Integer.parseInt(s[2]) + m, n, m)) {
                         n += Integer.parseInt(s[1]);
                         m += Integer.parseInt(s[2]);
                     }
                     printer.write("move\n");
                     printer.flush();
+                    break;
+                case "kill":
+                    System.out.println("wana reader");
+                    reader.close();
+                    System.out.println("wana printer");
+                    printer.close();
+                    System.out.println("wana eror");
+                    error.close();
+                    System.out.println("wana destroy");
+                    process.destroyForcibly();
                     break;
 
             }
@@ -118,9 +124,9 @@ public class AnimalController implements Runnable {
 
     public void kill() {
         isLive = false;
-        reader.close();
-        printer.close();
-        process.destroyForcibly();
+        printer.write("kill\n");
+        printer.flush();
+
 
     }
 
