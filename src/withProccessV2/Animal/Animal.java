@@ -158,6 +158,10 @@ public class Animal extends Thread {
                 }
                 System.out.println("notify");
             }
+            if(isInterrupted()){
+                System.out.println("kill\n");
+                break;
+            }
 
             if (Math.random() < 0.5)
                 move((int) (Math.random() * 3 - 1), (int) (Math.random() * 3 - 1));

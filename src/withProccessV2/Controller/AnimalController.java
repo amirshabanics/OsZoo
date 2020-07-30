@@ -45,7 +45,8 @@ public class AnimalController implements Runnable {
     private void CreateProccess() {
         try {
 //            process = Runtime.getRuntime().exec("java C:\\Users\\npc\\IdeaProjects\\OsZoo\\src\\withProccessV2\\Animal\\Animal.java");
-            process = Runtime.getRuntime().exec("java /home/morta/IdeaProjects/OsZoo/src/withProccessV2/Animal/Animal.java");
+//            process = Runtime.getRuntime().exec("java /home/morta/IdeaProjects/OsZoo/src/withProccessV2/Animal/Animal.java");
+            process = Runtime.getRuntime().exec("java  -cp /home/morta/IdeaProjects/OsZoo/bin withProccess.Animal.Animal");
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -64,7 +65,8 @@ public class AnimalController implements Runnable {
             s = me.split(" ");
             switch (s[0]) {
                 case "notify":
-                    Zoo.getZoo().getController().getInWait().addAndGet(-1);
+                    if (isLive)
+                        Zoo.getZoo().getController().getInWait().addAndGet(-1);
                     break;
                 case "stop":
 //                    if (Zoo.getZoo().b == true) {
@@ -84,14 +86,11 @@ public class AnimalController implements Runnable {
                     printer.flush();
                     break;
                 case "kill":
-                    System.out.println("wana reader");
                     reader.close();
-                    System.out.println("wana printer");
                     printer.close();
-                    System.out.println("wana eror");
                     error.close();
-                    System.out.println("wana destroy");
-                    process.destroyForcibly();
+//                    Zoo.getZoo().getController().getInWait().addAndGet(-1);
+//                    Zoo.getZoo().getController().getPopulation().addAndGet(-1);
                     break;
 
             }

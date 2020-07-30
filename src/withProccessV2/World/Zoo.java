@@ -74,7 +74,7 @@ public class Zoo {
         createCages();
         createAnimals();
         controller = new ZooController(s, r);
-        createGUI();
+//        createGUI();
     }
 
     private void createAnimals() {

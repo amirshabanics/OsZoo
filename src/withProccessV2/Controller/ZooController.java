@@ -25,6 +25,10 @@ public class ZooController implements Runnable {
         return state;
     }
 
+    public AtomicInteger getPopulation() {
+        return population;
+    }
+
     public ZooController(int s, int r) {
         population = new AtomicInteger(s * r);
         inWait = new AtomicInteger(0);
@@ -37,10 +41,10 @@ public class ZooController implements Runnable {
         while (Zoo.getZoo().isLive()) {
             System.out.println("wait");
             waitfor();
-            System.out.println("print");
-            print();
             System.out.println("death");
             death();
+//            System.out.println("print");
+//            print();
             System.out.println("birth");
             birth();
             System.out.println("wait again");
