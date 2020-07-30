@@ -41,12 +41,13 @@ public class ZooController implements Runnable {
         while (Zoo.getZoo().isLive()) {
             System.out.println("wait");
             waitfor();
+            print();
             System.out.println("death");
             death();
-            System.out.println("print");
             print();
             System.out.println("birth");
             birth();
+            print();
             System.out.println("wait again");
             waitfor();
             System.out.println("life");
