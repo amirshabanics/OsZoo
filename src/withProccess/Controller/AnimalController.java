@@ -1,7 +1,7 @@
-package withProccessV2.Controller;
+package withProccess.Controller;
 
-import withProccessV2.Cage.Cage;
-import withProccessV2.World.Zoo;
+import withProccess.Cage.Cage;
+import withProccess.World.Zoo;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -46,7 +46,7 @@ public class AnimalController implements Runnable {
         try {
 //            process = Runtime.getRuntime().exec("java C:\\Users\\npc\\IdeaProjects\\OsZoo\\src\\withProccessV2\\Animal\\Animal.java");
 //            process = Runtime.getRuntime().exec("java /home/morta/IdeaProjects/OsZoo/src/withProccessV2/Animal/Animal.java");
-            process = Runtime.getRuntime().exec("java  -cp /home/morta/IdeaProjects/OsZoo/bin withProccess.Animal.Animal");
+            process = Runtime.getRuntime().exec("java  -classpath /home/morta/IdeaProjects/OsZoo/bin withProccess.Animal.Animal");
         } catch (IOException e) {
             e.printStackTrace();
         }

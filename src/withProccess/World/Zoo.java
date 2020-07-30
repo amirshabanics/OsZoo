@@ -1,8 +1,8 @@
-package withProccessV2.World;
+package withProccess.World;
 
-import withProccessV2.Cage.Cage;
-import withProccessV2.Controller.AnimalController;
-import withProccessV2.Controller.ZooController;
+import withProccess.Cage.Cage;
+import withProccess.Controller.AnimalController;
+import withProccess.Controller.ZooController;
 
 import javax.swing.*;
 import java.awt.*;
@@ -74,7 +74,7 @@ public class Zoo {
         createCages();
         createAnimals();
         controller = new ZooController(s, r);
-//        createGUI();
+        createGUI();
     }
 
     private void createAnimals() {

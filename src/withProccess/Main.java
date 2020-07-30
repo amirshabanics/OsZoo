@@ -1,7 +1,7 @@
-package withProccessV2;
+package withProccess;
 
 
-import withProccessV2.World.Zoo;
+import withProccess.World.Zoo;
 
 public class Main {
     public static void main(String[] args) {
